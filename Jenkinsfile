@@ -1,7 +1,7 @@
 node {
     stage('Preparation') { // for display purposes
         // Get some code from a GitHub repository
-        git 'https://github.com/irfan-devops/login.git'
+         git 'https://github.com/irfan-devops/rep1.git'
     }
     stage('mvn clean') {
         // Run the maven build
