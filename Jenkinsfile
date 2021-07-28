@@ -8,7 +8,7 @@ node {
 		sh 'mvn clean'
        }
         
-	stage('mvn validate') {
+    stage('mvn validate') {
         // Run the maven build
         sh 'mvn validate'
        }
