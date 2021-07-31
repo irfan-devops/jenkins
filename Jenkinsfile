@@ -3,6 +3,11 @@ node {
         // Get some code from a GitHub repository
       git branch: 'main', url: 'https://github.com/irfan-devops/login.git'
     }
+	
+    stage (mvn version') {
+	sh 'mvn --version'
+	}
+		 
     stage('mvn clean') {
         // Run the maven build
 		sh 'mvn clean'
