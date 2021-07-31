@@ -1,40 +1,48 @@
-node {
-    stage('Preparation') { // for display purposes
-        // Get some code from a GitHub repository
-      git branch: 'main', url: 'https://github.com/irfan-devops/login.git'
-    }
+pipeline {
+    agent any
+
+    tools {
+     maven 'maven 3.8.1'
+	 }
+	 
+	stages {
+	   stage ('git clone') {
+	   steps {
+	   git branch: 'main', url: 'https://github.com/irfan-devops/login.git'
+	   }
+	   }
+	 
+	stage ('mvn version') {
+	     steps {
+		  sh 'mvn --version'
+		 }
+		 }
 	
-    stage ('mvn version') {
-	sh 'mvn --version'
-	}
-		 
-    stage('mvn clean') {
-        // Run the maven build
+	stage('mvn clean') {
+       steps {
 		sh 'mvn clean'
        }
-        
-    stage('mvn validate') {
-        // Run the maven build
+     }
+		
+	stage('mvn validate') {
+       steps {
         sh 'mvn validate'
        }
-
+    }
+	
     stage('mvn compile') {
-        // Run the maven build
+        steps {
         sh 'mvn compile'
        }
+	   }
+	   
    	stage('mvn test') {
-        // Run the maven build
+       steps {
         sh 'mvn test'
        }
-       
+       }
     stage('mvn package') {
-        // Run the maven build
+        steps {
         sh 'mvn package'
        }
-	stage('mvn deploy') {
-        // Run the maven build
-        sh 'mvn deploy'
-       }
-}
-       
-	   
+	   }
