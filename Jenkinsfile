@@ -6,45 +6,45 @@ pipeline {
 	 }
 	 
 	stages {
-	   stage ('git clone') {
+	   stage ('gitclone') {
 	   steps {
 	   git branch: 'main', url: 'https://github.com/irfan-devops/login.git'
 	   }
 	   }
 	 
-	stage ('mvn version') {
+	stage ('maven version') {
 	     steps {
 		  sh 'mvn --version'
 		 }
 		 }
 	
-	stage('mvn clean') {
+	stage('maven clean') {
        steps {
 		sh 'mvn clean'
        }
      }
 		
-	stage('mvn validate') {
+	stage('maven validate') {
        steps {
         sh 'mvn validate'
        }
     }
 	
-    stage('mvn compile') {
+    stage('maven compile') {
         steps {
         sh 'mvn compile'
        }
 	   }
 	   
-   	stage('mvn test') {
+   	stage('maven test') {
        steps {
         sh 'mvn test'
        }
        }
-    stage('mvn package') {
+    stage('maven package') {
         steps {
         sh 'mvn package'
        }
 	   }
-	}
-}
+	   }
+	   }
