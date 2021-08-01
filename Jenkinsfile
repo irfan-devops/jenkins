@@ -1,9 +1,5 @@
 pipeline {
-    agent any
-    tools {
-     maven 'Maven-3.8.1'
-	}
-	stages {
+ 	stages {
 	   stage ('gitclone') {
 	   steps {
 	   git branch: 'main', url: 'https://github.com/irfan-devops/login.git'
@@ -44,5 +40,4 @@ pipeline {
         sh 'mvn package'
        }
 	   }
-	  }
-    }
+	     }
